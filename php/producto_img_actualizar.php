@@ -1,5 +1,5 @@
 <?php
-    require_once "../php/main.php";
+    require_once "main.php";
 
 	/*== Almacenando datos ==*/
     $product_id=limpiar_cadena($_POST['img_up_id']);

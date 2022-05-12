@@ -1,5 +1,5 @@
 <?php
-	require_once "../php/main.php";
+	require_once "main.php";
 
 	/*== Almacenando id ==*/
     $id=limpiar_cadena($_POST['categoria_id']);

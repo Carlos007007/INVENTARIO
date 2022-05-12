@@ -1,7 +1,7 @@
 <?php
 	require_once "../inc/session_start.php";
 
-	require_once "../php/main.php";
+	require_once "main.php";
 
     /*== Almacenando id ==*/
     $id=limpiar_cadena($_POST['usuario_id']);

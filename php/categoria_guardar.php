@@ -1,5 +1,5 @@
 <?php
-	require_once "../php/main.php";
+	require_once "main.php";
 
     /*== Almacenando datos ==*/
     $nombre=limpiar_cadena($_POST['categoria_nombre']);

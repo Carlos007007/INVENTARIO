@@ -1,6 +1,6 @@
 <?php
     
-    require_once "../php/main.php";
+    require_once "main.php";
 
     /*== Almacenando datos ==*/
     $nombre=limpiar_cadena($_POST['usuario_nombre']);
