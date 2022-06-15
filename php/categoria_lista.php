@@ -3,18 +3,25 @@
 	$tabla="";
 
 	if(isset($busqueda) && $busqueda!=""){
-		$consulta="SELECT SQL_CALC_FOUND_ROWS * FROM categoria WHERE categoria_nombre LIKE '%$busqueda%' OR categoria_ubicacion LIKE '%$busqueda%' ORDER BY categoria_nombre ASC LIMIT $inicio,$registros";
+
+		$consulta_datos="SELECT * FROM categoria WHERE categoria_nombre LIKE '%$busqueda%' OR categoria_ubicacion LIKE '%$busqueda%' ORDER BY categoria_nombre ASC LIMIT $inicio,$registros";
+
+		$consulta_total="SELECT COUNT(categoria_id) FROM categoria WHERE categoria_nombre LIKE '%$busqueda%' OR categoria_ubicacion LIKE '%$busqueda%'";
+
 	}else{
-		$consulta="SELECT SQL_CALC_FOUND_ROWS * FROM categoria ORDER BY categoria_nombre ASC LIMIT $inicio,$registros";
+
+		$consulta_datos="SELECT * FROM categoria ORDER BY categoria_nombre ASC LIMIT $inicio,$registros";
+
+		$consulta_total="SELECT COUNT(categoria_id) FROM categoria";
+		
 	}
 
 	$conexion=conexion();
 
-	$datos = $conexion->query($consulta);
-
+	$datos = $conexion->query($consulta_datos);
 	$datos = $datos->fetchAll();
 
-	$total = $conexion->query("SELECT FOUND_ROWS()");
+	$total = $conexion->query($consulta_total);
 	$total = (int) $total->fetchColumn();
 
 	$Npaginas =ceil($total/$registros);
