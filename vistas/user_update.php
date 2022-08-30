@@ -1,5 +1,8 @@
 <?php
+	require_once "./php/main.php";
+
     $id = (isset($_GET['user_id_up'])) ? $_GET['user_id_up'] : 0;
+    $id=limpiar_cadena($id);
 ?>
 <div class="container is-fluid mb-6">
 	<?php if($id==$_SESSION['id']){ ?>
@@ -15,8 +18,6 @@
 	<?php
 
 		include "./inc/btn_back.php";
-
-		require_once "./php/main.php";
 
         /*== Verificando usuario ==*/
     	$check_usuario=conexion();

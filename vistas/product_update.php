@@ -10,6 +10,7 @@
 		require_once "./php/main.php";
 
 		$id = (isset($_GET['product_id_up'])) ? $_GET['product_id_up'] : 0;
+		$id=limpiar_cadena($id);
 
 		/*== Verificando producto ==*/
     	$check_producto=conexion();
