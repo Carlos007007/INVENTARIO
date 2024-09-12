@@ -24,6 +24,8 @@
 
                 include "./vistas/".$_GET['vista'].".php";
 
+                require_once "./inc/footer.php";
+
                 include "./inc/script.php";
 
             }else{
