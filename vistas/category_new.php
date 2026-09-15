@@ -1,6 +1,6 @@
 <div class="container is-fluid mb-6">
 	<h1 class="title">Categorías</h1>
-	<h2 class="subtitle">Nueva categoría</h2>
+	<h2 class="subtitle"><i class="fa-solid fa-plus fa-fw"></i> &nbsp; Nueva categoría</h2>
 </div>
 
 <div class="container pb-6 pt-6">
@@ -23,7 +23,7 @@
 		  	</div>
 		</div>
 		<p class="has-text-centered">
-			<button type="submit" class="button is-info is-rounded">Guardar</button>
+			<button type="submit" class="button is-info is-rounded"><i class="fa-regular fa-floppy-disk fa-fw"></i> &nbsp; Guardar</button>
 		</p>
 	</form>
 </div>

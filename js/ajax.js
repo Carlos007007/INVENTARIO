@@ -27,8 +27,8 @@ function enviar_formulario_ajax(e){
             let contenedor=document.querySelector(".form-rest");
             contenedor.innerHTML = respuesta;
         });
-    }
 
+    }
 }
 
 formularios_ajax.forEach(formularios => {

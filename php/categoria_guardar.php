@@ -1,12 +1,11 @@
 <?php
-	require_once "main.php";
+    require_once "main.php";
 
-    /*== Almacenando datos ==*/
+    # Almacenando datos#
     $nombre=limpiar_cadena($_POST['categoria_nombre']);
     $ubicacion=limpiar_cadena($_POST['categoria_ubicacion']);
 
-
-    /*== Verificando campos obligatorios ==*/
+    # Verificando campos obligatorios #
     if($nombre==""){
         echo '
             <div class="notification is-danger is-light">
@@ -17,8 +16,7 @@
         exit();
     }
 
-
-    /*== Verificando integridad de los datos ==*/
+    # Verificando integridad de los datos #
     if(verificar_datos("[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{4,50}",$nombre)){
         echo '
             <div class="notification is-danger is-light">
@@ -30,19 +28,18 @@
     }
 
     if($ubicacion!=""){
-    	if(verificar_datos("[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{5,150}",$ubicacion)){
-	        echo '
-	            <div class="notification is-danger is-light">
-	                <strong>¡Ocurrio un error inesperado!</strong><br>
-	                La UBICACION no coincide con el formato solicitado
-	            </div>
-	        ';
-	        exit();
-	    }
+        if(verificar_datos("[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{5,150}",$ubicacion)){
+            echo '
+                <div class="notification is-danger is-light">
+                    <strong>¡Ocurrio un error inesperado!</strong><br>
+                    La UBICACION no coincide con el formato solicitado
+                </div>
+            ';
+            exit();
+        }
     }
 
-
-    /*== Verificando nombre ==*/
+    # Verificando nombre #
     $check_nombre=conexion();
     $check_nombre=$check_nombre->query("SELECT categoria_nombre FROM categoria WHERE categoria_nombre='$nombre'");
     if($check_nombre->rowCount()>0){
@@ -56,8 +53,7 @@
     }
     $check_nombre=null;
 
-
-    /*== Guardando datos ==*/
+    # Guardando datos #
     $guardar_categoria=conexion();
     $guardar_categoria=$guardar_categoria->prepare("INSERT INTO categoria(categoria_nombre,categoria_ubicacion) VALUES(:nombre,:ubicacion)");
 
@@ -72,14 +68,14 @@
         echo '
             <div class="notification is-info is-light">
                 <strong>¡CATEGORIA REGISTRADA!</strong><br>
-                La categoría se registro con exito
+                La Categoria se registro con exito
             </div>
         ';
     }else{
         echo '
             <div class="notification is-danger is-light">
                 <strong>¡Ocurrio un error inesperado!</strong><br>
-                No se pudo registrar la categoría, por favor intente nuevamente
+                No se pudo registrar la categoria, por favor intente nuevamente
             </div>
         ';
     }

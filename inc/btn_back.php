@@ -1,7 +1,6 @@
 <p class="has-text-right pt-4 pb-4">
-	<a href="#" class="button is-link is-rounded btn-back"><- Regresar atrás</a>
+		<a href="#" class="button is-link is-rounded btn-back"><i class="fa-solid fa-arrow-left fa-fw"></i> &nbsp; Regresar atrás</a>
 </p>
-
 <script type="text/javascript">
     let btn_back = document.querySelector(".btn-back");
 

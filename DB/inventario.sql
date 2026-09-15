@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 26-02-2022 a las 00:05:46
+-- Tiempo de generación: 16-11-2024 a las 01:20:56
 -- Versión del servidor: 5.7.33
--- Versión de PHP: 8.0.10
+-- Versión de PHP: 8.2.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `pdo`
+-- Base de datos: `inventario`
 --
 
 -- --------------------------------------------------------
@@ -31,6 +31,21 @@ CREATE TABLE `categoria` (
   `categoria_id` int(7) NOT NULL,
   `categoria_nombre` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
   `categoria_ubicacion` varchar(150) COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `empresa`
+--
+
+CREATE TABLE `empresa` (
+  `empresa_id` int(11) NOT NULL,
+  `empresa_nombre` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
+  `empresa_telefono` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `empresa_email` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `empresa_direccion` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
+  `empresa_foto` varchar(200) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
@@ -58,11 +73,11 @@ CREATE TABLE `producto` (
 
 CREATE TABLE `usuario` (
   `usuario_id` int(10) NOT NULL,
-  `usuario_nombre` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `usuario_apellido` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `usuario_usuario` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `usuario_clave` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `usuario_email` varchar(70) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish2_ci NOT NULL
+  `usuario_nombre` varchar(40) COLLATE utf8_spanish2_ci NOT NULL,
+  `usuario_apellido` varchar(40) COLLATE utf8_spanish2_ci NOT NULL,
+  `usuario_usuario` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
+  `usuario_clave` varchar(200) COLLATE utf8_spanish2_ci NOT NULL,
+  `usuario_email` varchar(70) COLLATE utf8_spanish2_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 --
@@ -70,7 +85,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`usuario_id`, `usuario_nombre`, `usuario_apellido`, `usuario_usuario`, `usuario_clave`, `usuario_email`) VALUES
-(1, 'Administrador', 'Principal', 'Administrador', '$2y$10$EPY9LSLOFLDDBriuJICmFOqmZdnDXxLJG8YFbog5LcExp77DBQvgC', '');
+(1, 'Administrador', 'Principal', 'Administrador', '$2y$10$RPllu8Q.HHXxLrllYSB0hObg0v9b0FrBj5OGZtFuwVzzZP.Jm9GXS', '');
 
 --
 -- Índices para tablas volcadas
@@ -81,6 +96,12 @@ INSERT INTO `usuario` (`usuario_id`, `usuario_nombre`, `usuario_apellido`, `usua
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`categoria_id`);
+
+--
+-- Indices de la tabla `empresa`
+--
+ALTER TABLE `empresa`
+  ADD PRIMARY KEY (`empresa_id`);
 
 --
 -- Indices de la tabla `producto`
@@ -105,6 +126,12 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `categoria`
   MODIFY `categoria_id` int(7) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `empresa`
+--
+ALTER TABLE `empresa`
+  MODIFY `empresa_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`

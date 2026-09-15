@@ -1,40 +1,39 @@
 <?php require "./inc/session_start.php"; ?>
 <!DOCTYPE html>
-<html>
-    <head>
-        <?php include "./inc/head.php"; ?>
-    </head>
-    <body>
-        <?php
+<html lang="es">
+<head>
+    <?php include "./inc/head.php"; ?>
+</head>
+<body>
+    <?php
 
-            if(!isset($_GET['vista']) || $_GET['vista']==""){
-                $_GET['vista']="login";
+        if(!isset($_GET['vista']) || $_GET['vista']==""){
+            $_GET['vista']="login";
+        }
+
+        if(is_file("./vistas/".$_GET['vista'].".php") && $_GET['vista']!="login" && $_GET['vista']!="404"){
+
+            # Cerrar sesion #
+            if((!isset($_SESSION['id']) || $_SESSION['id']=="") || (!isset($_SESSION['usuario']) || $_SESSION['usuario']=="")){
+                include "./vistas/logout.php";
+                exit();
             }
 
+            include "./inc/navbar.php";
 
-            if(is_file("./vistas/".$_GET['vista'].".php") && $_GET['vista']!="login" && $_GET['vista']!="404"){
+            include "./vistas/".$_GET['vista'].".php";
 
-                /*== Cerrar sesion ==*/
-                if((!isset($_SESSION['id']) || $_SESSION['id']=="") || (!isset($_SESSION['usuario']) || $_SESSION['usuario']=="")){
-                    include "./vistas/logout.php";
-                    exit();
-                }
+            require_once "./inc/footer.php";
 
-                include "./inc/navbar.php";
+            include "./inc/script.php";
 
-                include "./vistas/".$_GET['vista'].".php";
-
-                require_once "./inc/footer.php";
-
-                include "./inc/script.php";
-
+        }else{
+            if($_GET['vista']=="login"){
+                include "./vistas/login.php";
             }else{
-                if($_GET['vista']=="login"){
-                    include "./vistas/login.php";
-                }else{
-                    include "./vistas/404.php";
-                }
+                include "./vistas/404.php";
             }
-        ?>
-    </body>
+        } 
+    ?>
+</body>
 </html>
